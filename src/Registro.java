@@ -62,7 +62,7 @@ public class Registro {
                 case 1:
                     System.out.println("Ingrese el código del estudiante");
                     codigo = lector.next();
-                    if (nombres_estudiantes.containsKey(codigo)) {
+                    if (!nombres_estudiantes.containsKey(codigo)) {
                         lector.nextLine();
                         System.out.println("Ingrese el nombre del estudiante");
                         nombre = lector.nextLine();
@@ -70,6 +70,8 @@ public class Registro {
                         nombres_estudiantes.put(codigo, nombre);
                         asistencias_estudiantes.put(codigo, asistencias);
                     }
+                    else
+                        System.out.println("El código " + codigo + " ya existe");
                     break;
                 case 2:
                     System.out.println("Ingrese el código del estudiante");
