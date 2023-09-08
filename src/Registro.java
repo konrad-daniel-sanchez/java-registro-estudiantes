@@ -62,12 +62,14 @@ public class Registro {
                 case 1:
                     System.out.println("Ingrese el código del estudiante");
                     codigo = lector.next();
-                    lector.nextLine();
-                    System.out.println("Ingrese el nombre del estudiante");
-                    nombre = lector.nextLine();
-                    asistencias = 0;
-                    nombres_estudiantes.put(codigo, nombre);
-                    asistencias_estudiantes.put(codigo, asistencias);
+                    if (nombres_estudiantes.containsKey(codigo)) {
+                        lector.nextLine();
+                        System.out.println("Ingrese el nombre del estudiante");
+                        nombre = lector.nextLine();
+                        asistencias = 0;
+                        nombres_estudiantes.put(codigo, nombre);
+                        asistencias_estudiantes.put(codigo, asistencias);
+                    }
                     break;
                 case 2:
                     System.out.println("Ingrese el código del estudiante");
@@ -85,6 +87,7 @@ public class Registro {
                     System.out.println("Ingrese el código del estudiante");
                     codigo = lector.next();
                     nombres_estudiantes.remove(codigo);
+                    asistencias_estudiantes.remove(codigo);
                     break;
                 case 4:
                     System.out.println("Ingrese el código del estudiante");
@@ -117,7 +120,7 @@ public class Registro {
                     codigo = lector.next();
                     if (nombres_estudiantes.containsKey(codigo)) {
                         asistencias = asistencias_estudiantes.get(codigo);
-                        asistencias_estudiantes.put(codigo, asistencias + 1);
+                        asistencias_estudiantes.put(codigo, ++asistencias);
                     }
                     else
                         System.out.println("NO existe un estudiante con el código " + codigo);
